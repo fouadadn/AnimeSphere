@@ -113,11 +113,11 @@ export default function AnimeDetails() {
                 </div>
                 <div className="px-4 lg:px-10 flex items-end sm:items-start gap-10 absolute bottom-3 sm:bottom-10 lg:static">
                     <div className="w-32 lg:w-64">
-                        <img src={animeFull?.images?.jpg?.large_image_url} alt="" className="w-32 lg:w-64 rounded-xl relative lg:bottom-32  shadow-lg shadow-[#6c6c6cc2]" />
+                        <img src={animeFull?.images?.jpg?.large_image_url} alt="" className="w-44 lg:w-64 rounded-xl relative lg:bottom-32  shadow-lg shadow-[#6c6c6cc2]" />
                     </div>
                     <div className="text-white space-y-2 mt-6 ">
-                        <div>
-                            <h1 className="text-3xl font-medium">{animeFull?.title_english}</h1>
+                        <div className="relative right-9 sm:right-0">
+                            <h1 className=" md:text-3xl font-medium">{animeFull?.title_english}</h1>
                             <div className="text-white flex gap-2 py-1 px-2 items-center">
                                 <Star size={15} color="white    " />
                                 <span>{animeFull?.score}</span>
@@ -143,24 +143,20 @@ export default function AnimeDetails() {
 
             </div>
 
-            <div className="px-4 lg:px-10 relative lg:bottom-20 text-xl font-medium">
+            <div className="mx-2 lg:mx-10 rounded-xl relative mt-4 lg:bottom-20 text-xl font-medium flex justify-center backdrop-blur-xl bg-stone-50 py-1">
                 <div className="border-gray-500  w-fit">
-                    <div className="text-white flex gap-5">
-                        <NavLink to={`/anime/${id}/Overview`} className={` p-3 text-gray-500 ${location.pathname.includes('Overview') ? 'text-white' : ''} hover:text-white hover:bg-stone-800 rounded-xl duration-300`}>
-                            <span to={`/anime/${id}/Overview`} href="">Overview</span>
-                            {location.pathname.includes('Overview') ? <hr className="relative top-3 w-20" /> : ''}
+                    <div className="text-white flex gap-5 text-sm md:text-2xl py-1">
+                        <NavLink to={`/anime/${id}/Overview`} className={` p-3 text-black ${location.pathname.includes('Overview') ? 'text-white bg-stone-800' : ''} hover:text-white hover:bg-stone-800 rounded-xl duration-300`}>
+                            <span className="text-center" to={`/anime/${id}/Overview`} href="">Overview</span>   
                         </NavLink>
-                        <NavLink to={`/anime/${id}/Characters`} className={` p-3 text-gray-500 ${location.pathname.includes('Characters') ? 'text-white' : ''} hover:text-white hover:bg-stone-800 rounded-xl duration-300`}>
+                        <NavLink to={`/anime/${id}/Characters`} className={` p-3 text-black ${location.pathname.includes('Characters') ? 'text-white bg-stone-800' : ''} hover:text-white hover:bg-stone-800 rounded-xl duration-300`}>
                             <span to={`/anime/${id}/Characters`}>Characters</span>
-                            {location.pathname.includes('Characters') ? <hr className="relative top-3 w-24" /> : ''}
                         </NavLink>
-                        <NavLink to={`/anime/${id}/Staff`} className={` p-3 text-gray-500 ${location.pathname.includes('Staff') ? 'text-white' : ''} hover:text-white hover:bg-stone-800 rounded-xl duration-300`}>
+                        <NavLink to={`/anime/${id}/Staff`} className={` p-3 text-black ${location.pathname.includes('Staff') ? 'text-white bg-stone-800' : ''} hover:text-white hover:bg-stone-800 rounded-xl duration-300`}>
                             <span to={`/anime/${id}/Staff`}>Staff</span>
-                            {location.pathname.includes('Staff') ? <hr className="relative top-3 w-10" /> : ''}
                         </NavLink>
-                        <NavLink to={`/anime/${id}/Reviews`} className={` p-3 text-gray-500 ${location.pathname.includes('Reviews') ? 'text-white' : ''} hover:text-white hover:bg-stone-800 rounded-xl duration-300`}>
+                        <NavLink to={`/anime/${id}/Reviews`} className={` p-3 text-black ${location.pathname.includes('Reviews') ? 'text-white bg-stone-800' : ''} hover:text-white hover:bg-stone-800 rounded-xl duration-300`}>
                             <span to={`/anime/${id}/Reviews`}>Reviews</span>
-                            {location.pathname.includes('Reviews') ? <hr className="relative top-3 w-20" /> : ''}
                         </NavLink>
                     </div>
                     <hr className="border-gray-800" />

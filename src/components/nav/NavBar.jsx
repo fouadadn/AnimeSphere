@@ -53,7 +53,7 @@ export default function Nav() {
                             </div>
                             <div className="flex gap-3">
                                 <button className="bg-stone-800 px-4 py-3 rounded-xl text-nowrap">Log in</button>
-                                <button className="bg-white rounded-xl px-4 py-3 text-black text-nowrap">Get Started</button>
+                                <button className="bg-white rounded-xl px-4 py-3 text-black text-nowrap hidden sm:block ">Get Started</button>
                             </div>
                         </div>
                     </div>

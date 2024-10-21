@@ -18,9 +18,9 @@ const Reviews = () => {
   return (
     <div className='px-4 lg:px-10'>
       <h1 className='text-white font-bold text-2xl'>Reviews</h1>
-      <div className='space-y-10 w-[700px] mt-6'>
+      <div className={`space-y-10 ${reviews.length > 0 ? 'lg:w-[60%]' : '' }  mt-6`}>
         {
-          reviews.map((review , i) => 
+          reviews.length > 0 ? reviews.map((review , i) => 
           <div className='flex gap-3'>
             <div className='w-14 rounded-full h-14 overflow-hidden shrink-0'>
                 <img src={review?.user?.images.jpg.image_url} className='w-14'  alt="" />
@@ -37,7 +37,7 @@ const Reviews = () => {
               </div>
             </div>
           </div>
-          )
+          ) : <div className='text-white text-2xl font-bold text-center'>No reviews found</div>
         }
       </div>
     </div>
