@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams, Outlet, NavLink, useLocation } from "react-router-dom"
 import { Star, Bookmark, Eye, Check } from "lucide-react"
 import Footer from "../../components/Footer/Footer"
@@ -96,7 +96,7 @@ export default function AnimeDetails() {
         setepisode(e.target.value)
     }
 
-    const handleTypeEpisodeChange = (e)=>{
+    const handleTypeEpisodeChange = (e) => {
         setepisode(e.target.value)
     }
 
@@ -148,7 +148,7 @@ export default function AnimeDetails() {
                 <div className="border-gray-500  w-fit">
                     <div className="text-white flex gap-5 text-sm md:text-2xl py-1">
                         <NavLink to={`/anime/${id}/Overview`} className={` p-3 text-black ${location.pathname.includes('Overview') ? 'text-white bg-stone-800' : ''} hover:text-white hover:bg-stone-800 rounded-xl duration-300`}>
-                            <span className="text-center" to={`/anime/${id}/Overview`} href="">Overview</span>   
+                            <span className="text-center" to={`/anime/${id}/Overview`} href="">Overview</span>
                         </NavLink>
                         <NavLink to={`/anime/${id}/Characters`} className={` p-3 text-black ${location.pathname.includes('Characters') ? 'text-white bg-stone-800' : ''} hover:text-white hover:bg-stone-800 rounded-xl duration-300`}>
                             <span to={`/anime/${id}/Characters`}>Characters</span>
@@ -177,18 +177,17 @@ export default function AnimeDetails() {
                     <div>
                         <select onChange={handleEpisodeschange} name="" id="" className="outline-none bg-stone-700 px-4 py-2 rounded-lg ">
                             <option value="">Episods</option>
-                            {Array.from(Array(animeFull?.episodes) , (v, i) => <option key={i} value={i + 1} >{i + 1}</option>)}
+                            {Array.from(Array(animeFull?.episodes), (v, i) => <option key={i} value={i + 1} >{i + 1}</option>)}
                         </select>
                     </div>
                 </div>
-                <div className="flex  justify-end">
+                <div className="flex justify-end">
                     <input onChange={handleTypeEpisodeChange} type="number" min={1} placeholder="Type EP" name="" id="" className="outline-none px-4 py-1 rounded-lg bg-stone-700 text-white w-28" />
                 </div>
                 <div >
                     <div className="relative overflow-hidden w-[100%] pt-[56.25%]">
                         {
                             aniListId ? <iframe className="absolute top-0 bottom-0 right-0 left-0 w-[100%] h-[100%] border-[#ffffff9a] border-2 rounded-3xl py-4 "
-                                src={`https://vidsrc.icu/embed/anime/${aniListId ? aniListId : id}/${episode}/0`}
                                 scrolling="no" frameBorder="0" allowFullScreen ></iframe>
                                 : <div className="absolute top-0 bottom-0 right-0 left-0 w-[100%] h-[100%] border-[#ffffff9a] border-2 rounded-3xl py-4 flex flex-col gap-3 justify-center items-center">
                                     <div className="h-16 w-16 border-r-0 border-t-0 animate-spin border-4 rounded-full">
@@ -212,7 +211,7 @@ export default function AnimeDetails() {
                     dark:[&::-webkit-scrollbar-track]:bg-[#7300FF10]
                     dark:[&::-webkit-scrollbar-thumb]:bg-white">
                     {
-                       Recommandations.length > 0 ? Recommandations.map((anime, i) =>
+                        Recommandations.length > 0 ? Recommandations.map((anime, i) =>
                             <NavLink to={`/anime/${anime?.entry?.mal_id}`} key={i} className="relative flex-shrink-0 h-52 overflow-hidden rounded-xl group ">
                                 <img src={anime?.entry?.images?.jpg?.large_image_url} className="w-40 group-hover:brightness-50 duration-300" alt="" />
                                 <div className="absolute bottom-0 w-full opacity-0 hover:opacity-100 duration-300 h-full flex flex-col items-center justify-end">
