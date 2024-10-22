@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import AnimeInfo from "../components/AnimeInfo/Animeinfo";
 import { Star } from "lucide-react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Footer from "../components/Footer/Footer";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -66,11 +67,11 @@ export default function Home() {
                 {Random6.map((anime, i) => (
                     <div
                         key={anime.mal_id}
-                        className={`absolute z-[99] text-white bottom-3 left-3 lg:left-10 transition-opacity duration-300 ease-in-out
+                        className={`absolute z-[99] text-white bottom-5 left-3 lg:left-10 transition-opacity duration-300 ease-in-out
                     ${animeIndex === i && showInfo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                     >
                         {animeIndex === i && (
-                            <AnimeInfo title={anime?.titles[0]?.title} overview={anime.synopsis} />
+                            <AnimeInfo title={anime?.titles[0]?.title} overview={anime?.synopsis} id={anime?.mal_id}/>
                         )}
                     </div>
                 ))}
@@ -78,7 +79,7 @@ export default function Home() {
             <div className="px-4 xl:px-32 mt-3">
                 <div>
                     <h1 className="text-white text-2xl font-bold">New released</h1>
-                    <div className="flex gap-6 justify-center relative top-0  lg:bottom-20 z-50 overflow-auto py-3
+                    <div className="flex gap-6 relative top-0  lg:bottom-20 z-50 overflow-auto py-3
                     [&::-webkit-scrollbar]:h-1
                     [&::-webkit-scrollbar-track]:rounded-full
                     [&::-webkit-scrollbar-track]:bg-gray-100
@@ -106,7 +107,7 @@ export default function Home() {
 
                 <div className="mt-16">
                     <h1 className="text-white text-2xl font-bold">Trending Now</h1>
-                    <div className="flex gap-6 justify-center relative top-0  lg:bottom-20 z-50 overflow-auto py-3
+                    <div className="flex gap-6  relative top-0  lg:bottom-20 z-50 overflow-auto py-3
                     [&::-webkit-scrollbar]:h-1
                     [&::-webkit-scrollbar-track]:rounded-full
                     [&::-webkit-scrollbar-track]:bg-gray-100
@@ -131,6 +132,8 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
+            <Footer/>
         </div>
     );
 }

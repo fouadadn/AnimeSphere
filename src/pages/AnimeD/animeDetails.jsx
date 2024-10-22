@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react"
+import {  useEffect, useState } from "react"
 import { useParams, Outlet, NavLink, useLocation } from "react-router-dom"
 import { Star, Bookmark, Eye, Check } from "lucide-react"
 import Footer from "../../components/Footer/Footer"
@@ -92,14 +92,15 @@ export default function AnimeDetails() {
 
     }, [id])
 
-
-
-
     const handleEpisodeschange = (e) => {
         setepisode(e.target.value)
     }
 
-    // console.log(animeFull)
+    const handleTypeEpisodeChange = (e)=>{
+        setepisode(e.target.value)
+    }
+
+    console.log(animeFull)
     console.log('anilistId : ', aniListId)
     return (
         <>
@@ -124,13 +125,13 @@ export default function AnimeDetails() {
                             </div>
                         </div>
                         <div className="flex gap-3 relative right-9 sm:right-0">
-                            <button className="text-nowrap bg-stone-800 rounded-lg px-2 sm:px-5 py-2 sm:py-3 text-white flex items-center gap-1">
+                            <a href="#videoplay" className="text-nowrap bg-stone-800 rounded-lg px-2 sm:px-5 py-2 sm:py-3 text-white flex items-center gap-1">
                                 <Eye />
-                                <span>Watch Now</span>
-                            </button>
+                                <span>Watch<span className="opacity-0">.</span>Now</span>
+                            </a>
                             <button className="text-nowrap bg-stone-800 rounded-lg px-2 sm:px-5 py-2 sm:py-3 text-white flex items-center gap-1">
                                 <Bookmark color="white" />
-                                <span> To Watch</span>
+                                <span> To<span className="opacity-0">.</span>Watch</span>
                             </button>
                             <button className="text-nowrap  bg-stone-800 rounded-lg px-5 py-3 text-white hidden sm:flex items-center gap-1">
                                 <Check />
@@ -167,11 +168,11 @@ export default function AnimeDetails() {
             </div>
 
             <div className="text-white px-4 lg:px-10 py-6 space-y-5">
-                <div className="flex justify-between">
+                <div id="videoplay" className="flex justify-between">
                     <h1 className="text-2xl font-bold">Watch Now </h1>
 
                     <span className="text-2xl font-bold">
-                        1-{animeFull?.episodes}
+                        1-{animeFull?.episodes ? animeFull?.episodes : '?'}
                     </span>
                     <div>
                         <select onChange={handleEpisodeschange} name="" id="" className="outline-none bg-stone-700 px-4 py-2 rounded-lg ">
@@ -180,7 +181,10 @@ export default function AnimeDetails() {
                         </select>
                     </div>
                 </div>
-                <div id="videoplay">
+                <div className="flex  justify-end">
+                    <input onChange={handleTypeEpisodeChange} type="number" min={1} placeholder="Type EP" name="" id="" className="outline-none px-4 py-1 rounded-lg bg-stone-700 text-white w-28" />
+                </div>
+                <div >
                     <div className="relative overflow-hidden w-[100%] pt-[56.25%]">
                         {
                             aniListId ? <iframe className="absolute top-0 bottom-0 right-0 left-0 w-[100%] h-[100%] border-[#ffffff9a] border-2 rounded-3xl py-4 "
@@ -208,14 +212,14 @@ export default function AnimeDetails() {
                     dark:[&::-webkit-scrollbar-track]:bg-[#7300FF10]
                     dark:[&::-webkit-scrollbar-thumb]:bg-white">
                     {
-                        Recommandations.map((anime, i) =>
+                       Recommandations.length > 0 ? Recommandations.map((anime, i) =>
                             <NavLink to={`/anime/${anime?.entry?.mal_id}`} key={i} className="relative flex-shrink-0 h-52 overflow-hidden rounded-xl group ">
                                 <img src={anime?.entry?.images?.jpg?.large_image_url} className="w-40 group-hover:brightness-50 duration-300" alt="" />
                                 <div className="absolute bottom-0 w-full opacity-0 hover:opacity-100 duration-300 h-full flex flex-col items-center justify-end">
                                     <h1 className="text-white w-40 font-bold text-lg text-center">{anime?.entry?.title}</h1>
                                 </div>
                             </NavLink>
-                        )
+                        ) : <div className='text-white text-2xl font-bold text-center w-full'>No Simiare found</div>
                     }
                 </div>
             </div>

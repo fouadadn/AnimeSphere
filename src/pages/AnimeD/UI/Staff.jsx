@@ -30,8 +30,8 @@ const Staff = () => {
       dark:[&::-webkit-scrollbar-thumb]:bg-white'>
         {
           stuff?.map((stuf, i) =>
-            <div className='relative flex-shrink-0 rounded-xl overflow-hidden group '>
-              <div key={i} className='  '>
+            <div key={i} className='relative flex-shrink-0 rounded-xl overflow-hidden group '>
+              <div  className='  '>
                 <img src={String(stuf?.person?.images.jpg.image_url).includes('questionmark') ? '/blank-profile-picture-973460_1280.png' : stuf?.person?.images.jpg.image_url} alt="" className='w-44 h-60 group-hover:brightness-50 duration-300' />
               </div>
               <div className='absolute text-white bottom-1 left-2 opacity-0 group-hover:opacity-100 duration-300'>

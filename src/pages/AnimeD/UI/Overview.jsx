@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useAnime } from '../animeDetails'
 import { useParams } from 'react-router-dom'
 import { Dot } from 'lucide-react'
 
@@ -27,11 +26,11 @@ const Overview = () => {
                         <tbody>
                             <tr >
                                 <td className='p-[9.5px] text-start text-zinc-500'>Type</td>
-                                <td className='p-[9.5px  '>{animeFull?.type}</td>
+                                <td className='p-[9.5px  '>{animeFull?.type ? animeFull?.type : '?'}</td>
                             </tr>
                             <tr>
                                 <td className='p-[9.5px] text-start text-zinc-500'>Episodes</td>
-                                <td className='p-[9.5px] '>{animeFull?.episodes}</td>
+                                <td className='p-[9.5px] '>{animeFull?.episodes ? animeFull?.episodes : '?'}</td>
                             </tr>
                             <tr>
                                 <td className='p-[9.5px] text-start text-zinc-500'>Genres</td>
@@ -43,31 +42,31 @@ const Overview = () => {
                             </tr>
                             <tr>
                                 <td className='p-[9.5px] text-start text-zinc-500'>Aired</td>
-                                <td className='p-[9.5px] w-32 block'><span>{animeFull?.aired?.from ? String(animeFull?.aired?.from).slice(0, 10) : ''}</span> {animeFull?.aired?.to ? 'To' : ''}  <span>{animeFull?.aired?.to ? String(animeFull?.aired?.to).slice(0, 10) : ''}</span></td>
+                                <td className='p-[9.5px] w-32 block'><span>{animeFull?.aired?.from ? String(animeFull?.aired?.from).slice(0, 10) : '?'}</span> To  <span>{animeFull?.aired?.to ? String(animeFull?.aired?.to).slice(0, 10) : '?'}</span></td>
                             </tr>
                             <tr>
                                 <td className='p-[9.5px] text-start text-zinc-500'>Status</td>
-                                <td className='p-[9.5px] '>{animeFull?.status}</td>
+                                <td className='p-[9.5px] '>{animeFull?.status ? animeFull?.status : '?'}</td>
                             </tr>
                             <tr>
                                 <td className='p-[9.5px] text-start text-zinc-500'>Season</td>
-                                <td className='p-[9.5px] '>{animeFull?.season} {animeFull?.year} </td>
+                                <td className='p-[9.5px] '>{animeFull?.season} {animeFull?.year ? animeFull?.year : '?'} </td>
                             </tr>
                             <tr>
                                 <td className='p-[9.5px] text-start text-zinc-500'>Studios</td>
-                                <td className='p-[9.5px] '>{animeFull?.studios?.map((v, i) => <span key={i}>{v.name}</span>)}</td>
+                                <td className='p-[9.5px] '>{animeFull?.studios ? animeFull?.studios?.map((v, i) => <span key={i}>{v.name}</span>) : '?'}</td>
                             </tr>
                             <tr>
                                 <td className='p-[9.5px] text-start text-zinc-500'>Source</td>
-                                <td className='p-[9.5px] '>{animeFull?.source}</td>
+                                <td className='p-[9.5px] '>{animeFull?.source ? animeFull?.source : '?'}</td>
                             </tr>
                             <tr>
                                 <td className='p-[9.5px] text-start text-zinc-500'>Rating</td>
-                                <td className='p-[9.5px] '>{String(animeFull?.rating?.split('+').slice(0, 1).join('-'))}</td>
+                                <td className='p-[9.5px] '>{animeFull?.rating ? String(animeFull?.rating?.split('+').slice(0, 1).join('-')) : '?'}</td>
                             </tr>
                             <tr>
                                 <td className='p-[9.5px] text-start text-zinc-500'>Duration</td>
-                                <td className='p-[9.5px] '>{String(animeFull?.duration)}</td>
+                                <td className='p-[9.5px] '>{animeFull?.duration ? String(animeFull?.duration) : '?'}</td>
                             </tr>
                         </tbody>
                     </table>

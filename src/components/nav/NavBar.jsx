@@ -1,12 +1,14 @@
 import { X, Menu, Search } from "lucide-react"
 import { useState } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 
 export default function Nav() {
     const [displayNav, setDisplayNav] = useState(false)
     const [displaySearch, setdisplaySearch] = useState(false)
     const [searchResults, setsearchResults] = useState([])
+    const location = useLocation()
 
+    console.log(location.pathname)
     const handleNavDisplay = () => {
         setDisplayNav(!displayNav)
     }
@@ -27,7 +29,7 @@ export default function Nav() {
 
     return (
         <>
-            <header className="relative lg:fixed z-[999] flex flex-col flex-wrap lg:justify-start px-4 lg:px-10  lg:flex-nowrap text-sm py-2 text-white w-full">
+            <header className="relative lg:fixed z-[999] flex flex-col flex-wrap items-center lg:justify-start px-2 lg:px-10  lg:flex-nowrap text-sm py-2 text-white w-full">
                 <nav className={`max-w-[95rem] w-full   px-4 lg:flex md:items-center md:justify-between backdrop-blur-xl bg-[#58585861] rounded-xl  overflow-hidden transition-all duration-700 ease-in-out h-16  ${displayNav ? 'h-[190px] lg:h-16' : ''} py-4`}>
                     <div className={`flex items-center justify-between duration-500`}>
                         <NavLink to='/'>
@@ -37,16 +39,16 @@ export default function Nav() {
                             {displayNav ? < X color='white' className='t9iil' size={20} /> : <Menu color='white' className='t9iil' size={20} />}
                         </button>
                     </div>
-                    <div className="flex justify-around flex-col lg:flex-row w-full gap-5 lg:gap-0">
+                    <div className="flex justify-between flex-col lg:flex-row w-full gap-5 lg:gap-0">
                         <div className="text-white  flex flex-col gap-5 pb-2 mt-5 lg:flex-row lg:items-center lg:justify-end lg:mt-0 md:ps-5 ">
                             <div className="flex gap-4 text-lg justify-around">
-                                <a className="hover:text-stone-400 duration-300" href="">Home</a>
+                                <NavLink to={'/'} className={`hover:text-stone-400 duration-300 ${location.pathname === '/' ?'border-b-[1px] ' : ''}`} href="">Home</NavLink>
                                 <a className="hover:text-stone-400 duration-300" href="">Catalog</a>
                                 <a className="hover:text-stone-400 duration-300" href="">News</a>
                                 <a className="hover:text-stone-400 duration-300" href="">Collection</a>
                             </div>
                         </div>
-                        <div className="flex gap-6 justify-around">
+                        <div className="flex gap-6">
                             <div className="flex bg-[#4f4f4f77] items-center pl-2 rounded-lg  gap-2 border-[1px] border-gray-400 ">
                                 <Search color="white" size={18} />
                                 <input onFocus={() => { setdisplaySearch(true) }} onChange={handleSearch} type="search" name="" id="search" className="bg-transparent outline-none py-[10px] px-3 w-48 lg:w-96 text-white" placeholder="Search" />
