@@ -14,7 +14,6 @@ const Reviews = () => {
     fetchAnimeCaracters();
   }, [])
 
-  console.log(reviews)
   return (
     <div className='px-4 lg:px-10'>
       <h1 className='text-white font-bold text-2xl'>Reviews</h1>

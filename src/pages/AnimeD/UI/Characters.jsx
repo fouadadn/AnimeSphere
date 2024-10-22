@@ -28,7 +28,7 @@ const Characters = () => {
         dark:[&::-webkit-scrollbar-track]:bg-[#7300FF10]
         dark:[&::-webkit-scrollbar-thumb]:bg-white'>
         {
-          Characters.map((character, i) =>
+          Characters.length > 0 ? Characters?.map((character, i) =>
             <div key={i} className='relative group duration-300 w-44 h-56'>
               <div>
                 <div key={i} className='flex-shrink-0 w-44 h-56 text-center rounded-xl overflow-hidden '>
@@ -41,17 +41,26 @@ const Characters = () => {
               <div className='absolute top-0 opacity-0 group-hover:opacity-100 duration-300'>
                 <div key={i} className='flex-shrink-0 w-44 h-56 text-center rounded-xl overflow-hidden '>
                   {
-                    character?.voice_actors.map((v ,i)=> <img key={i} src={v.person.images.jpg.image_url} className='brightness-75' />)
+                    character?.voice_actors.map((v, i) => <img key={i} src={v.person.images.jpg.image_url} className='brightness-75' />)
                   }
                 </div>
                 <div className='relative bottom-6 left-2 '>
                   {
-                    character?.voice_actors.map((v ,i) => <span key={i}>{v.language === "Japanese" ? v.person.name : ''}</span>)
+                    character?.voice_actors.map((v, i) => <span key={i}>{v.language === "Japanese" ? v.person.name : ''}</span>)
                   }
                 </div>
               </div>
             </div>
-          )
+          ) :
+            <div className="flex gap-3 md:gap-6 h-56 w-full">
+              {/* <div className="border-t-2 animate-spin border-white w-12 h-12 rounded-full">
+          </div> */}
+              {Array.from(Array(10), (v, i) =>
+                <div className="relative h-56 rounded-xl animate-pulse bg-stone-600 overflow-hidden group flex-shrink-0 w-40">
+
+                </div>
+              )}
+            </div>
         }
       </div>
     </div>)

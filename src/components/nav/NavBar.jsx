@@ -8,7 +8,6 @@ export default function Nav() {
     const [searchResults, setsearchResults] = useState([])
     const location = useLocation()
 
-    console.log(location.pathname)
     const handleNavDisplay = () => {
         setDisplayNav(!displayNav)
     }

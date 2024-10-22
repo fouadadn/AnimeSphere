@@ -75,7 +75,7 @@ const Overview = () => {
                 <div>
                     <h1 className='text-2xl font-bold'>Description</h1>
                     <div className=''>
-                        <p>{animeFull?.synopsis}</p>
+                        <p>{animeFull?.synopsis ? animeFull?.synopsis : '?'}</p>
                     </div>
                 </div>
             </div>

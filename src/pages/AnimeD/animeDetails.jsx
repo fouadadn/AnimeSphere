@@ -114,7 +114,7 @@ export default function AnimeDetails() {
                 </div>
                 <div className="px-4 lg:px-10 flex items-end sm:items-start gap-10 absolute bottom-3 sm:bottom-10 lg:static">
                     <div className="w-32 lg:w-64">
-                        <img src={animeFull?.images?.jpg?.large_image_url} alt="" className="w-44 lg:w-64 rounded-xl relative lg:bottom-32  shadow-lg shadow-[#6c6c6cc2]" />
+                        <img src={animeFull?.images?.jpg?.large_image_url ? animeFull?.images?.jpg?.large_image_url : '/posternotFound.jpg'} alt="" className="w-44 lg:w-64 rounded-xl relative lg:bottom-32  shadow-lg shadow-[#6c6c6cc2]" />
                     </div>
                     <div className="text-white space-y-2 mt-6 ">
                         <div className="relative right-9 sm:right-0">
@@ -177,7 +177,7 @@ export default function AnimeDetails() {
                     <div>
                         <select onChange={handleEpisodeschange} name="" id="" className="outline-none bg-stone-700 px-4 py-2 rounded-lg ">
                             <option value="">Episods</option>
-                            {Array.from(Array(animeFull?.episodes), (v, i) => <option key={i} value={i + 1} >{i + 1}</option>)}
+                            {Array.from(Array(animeFull?.episodes) , (v, i) => <option key={i} value={i + 1} >{i + 1}</option>)}
                         </select>
                     </div>
                 </div>
